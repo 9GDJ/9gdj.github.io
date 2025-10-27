@@ -3,437 +3,373 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>9GDJ | 电音舞曲平台</title>
+  <title>9GDJ - 极致舞曲体验</title>
   <!-- 引入外部资源 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
   
-  <!-- 配置Tailwind -->
+  <!-- 配置Tailwind自定义主题 -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            punk: {
-              red: '#FF3B30',
-              yellow: '#FFCC00',
-              black: '#1A1A1A',
-              gray: '#2C2C2E',
-              light: '#F5F5F7'
-            }
+            neon: {
+              pink: '#FF00FF',
+              blue: '#00FFFF',
+              purple: '#9D00FF',
+              yellow: '#FFFF00'
+            },
+            dark: '#0A0A16'
           },
           fontFamily: {
-            punk: ['"Permanent Marker"', 'cursive', 'sans-serif'],
-            sans: ['Inter', 'sans-serif']
-          },
-          animation: {
-            'glitch': 'glitch 2s infinite',
-            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'vibrate': 'vibrate 0.5s infinite'
-          },
-          keyframes: {
-            glitch: {
-              '0%, 100%': { transform: 'translate(0)' },
-              '20%': { transform: 'translate(-2px, 2px)' },
-              '40%': { transform: 'translate(-2px, -2px)' },
-              '60%': { transform: 'translate(2px, 2px)' },
-              '80%': { transform: 'translate(2px, -2px)' }
-            },
-            vibrate: {
-              '0%, 100%': { transform: 'translate(0)' },
-              '25%': { transform: 'translate(-1px, 1px)' },
-              '75%': { transform: 'translate(1px, -1px)' }
-            }
+            dance: ['"Orbitron"', 'sans-serif']
           }
         }
       }
     }
   </script>
   
-  <!-- 自定义样式 -->
+  <!-- 自定义工具类 -->
   <style type="text/tailwindcss">
     @layer utilities {
-      .content-auto {
-        content-visibility: auto;
+      .text-shadow-neon {
+        text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor;
       }
-      .text-shadow-punk {
-        text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+      .glow {
+        box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
       }
-      .noise-bg {
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+      .beat {
+        animation: beat 1s infinite alternate;
       }
-      .vinyl-spin {
-        animation: spin 20s linear infinite;
-      }
-      @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      .clip-diagonal {
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      .pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
       }
     }
   </style>
   
-  <!-- 引入字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <!-- 额外样式 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+    
+    body {
+      background-color: #0A0A16;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(157, 0, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.1) 0%, transparent 40%);
+      overflow-x: hidden;
+    }
+    
+    /* 音频波形动画 */
+    .waveform {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      height: 40px;
+    }
+    
+    .waveform span {
+      width: 4px;
+      background: currentColor;
+      border-radius: 2px;
+      animation: wave 1s infinite ease-in-out;
+    }
+    
+    .waveform span:nth-child(2) { animation-delay: 0.1s; height: 15px; }
+    .waveform span:nth-child(3) { animation-delay: 0.2s; height: 30px; }
+    .waveform span:nth-child(4) { animation-delay: 0.3s; height: 20px; }
+    .waveform span:nth-child(5) { animation-delay: 0.4s; height: 25px; }
+    .waveform span:nth-child(6) { animation-delay: 0.5s; height: 10px; }
+    .waveform span:nth-child(7) { animation-delay: 0.6s; height: 35px; }
+    
+    @keyframes wave {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(0.5); }
+    }
+    
+    @keyframes beat {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+    
+    /* 背景网格动画 */
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      animation: gridMove 10s linear infinite;
+    }
+    
+    @keyframes gridMove {
+      from { background-position: 0 0; }
+      to { background-position: 40px 40px; }
+    }
+  </style>
 </head>
 
-<body class="bg-punk-black text-punk-light font-sans noise-bg min-h-screen overflow-x-hidden">
+<body class="font-dance text-white min-h-screen">
+  <!-- 网格背景层 -->
+  <div class="fixed inset-0 grid-bg opacity-30 z-0"></div>
+  
   <!-- 导航栏 -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-punk-black/90 backdrop-blur-sm border-b border-punk-red/30">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="#" class="flex items-center space-x-2">
-        <div class="w-10 h-10 bg-punk-red rounded-full flex items-center justify-center animate-pulse-fast">
-          <span class="font-punk text-2xl">9G</span>
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-dark/70 border-b border-neon-purple/30">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="text-neon-pink text-2xl font-bold text-shadow-neon">9GDJ</div>
+        <div class="waveform text-neon-blue text-sm hidden md:block">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
-        <span class="font-punk text-2xl text-punk-light tracking-wider">9GDJ</span>
-      </a>
+      </div>
       
-      <!-- 桌面导航 -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="#genres" class="hover:text-punk-red transition-colors duration-300 font-bold uppercase tracking-wider">风格</a>
-        <a href="#chart" class="hover:text-punk-red transition-colors duration-300 font-bold uppercase tracking-wider">榜单</a>
-        <a href="#about" class="hover:text-punk-red transition-colors duration-300 font-bold uppercase tracking-wider">关于</a>
-        <button class="bg-punk-red hover:bg-punk-red/80 text-white px-6 py-2 rounded-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105">
-          播放全部
-        </button>
-      </nav>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#" class="hover:text-neon-pink transition-colors duration-300">首页</a>
+        <a href="#" class="hover:text-neon-blue transition-colors duration-300">舞曲库</a>
+        <a href="#" class="hover:text-neon-purple transition-colors duration-300">排行榜</a>
+        <a href="#" class="hover:text-neon-yellow transition-colors duration-300">关于我们</a>
+      </div>
       
-      <!-- 移动端端菜单按钮 -->
-      <button id="menu-toggle" class="md:hidden text-2xl">
+      <button class="md:hidden text-neon-blue text-xl">
         <i class="fa fa-bars"></i>
       </button>
     </div>
-    
-    <!-- 移动端导航菜单 -->
-    <div id="mobile-menu" class="hidden md:hidden md:hidden bg-punk-gray border-t border-punk-red/30">
-      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-        <a href="#genres" class="py-2 hover:text-punk-red transition-colors duration-300 font-bold uppercase tracking-wider">风格</a>
-        <a href="#chart" class="py-2 hover:text-punk-red transition-colors duration-300 font-bold uppercase tracking-wider">榜单</a>
-        <a href="#about" class="py-2 hover:text-punk-red transition-colors duration-300 font-bold uppercase tracking-wider">关于</a>
-        <button class="bg-punk-red hover:bg-punk-red/80 text-white px-6 py-3 rounded-sm font-bold uppercase tracking-wider transition-all duration-300 w-full">
-          播放全部
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- 英雄区域 -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden clip-diagonal bg-gradient-to-br from-punk-black to-punk-gray">
-      <!-- 装饰元素 -->
-      <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-punk-red/20 rounded-full filter blur-[100px]"></div>
-        <div class="absolute bottom-1/3 right-1/3 w-80 h-80 bg-punk-yellow/20 rounded-full filter blur-[100px]"></div>
-      </div>
+  </nav>
+  
+  <!-- 主内容区 -->
+  <main class="container mx-auto px-4 pt-32 pb-20 relative z-10">
+    <!-- 欢迎区域 -->
+    <section class="text-center mb-20">
+      <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-extrabold mb-6 leading-tight">
+        <span class="text-neon-pink text-shadow-neon beat">9</span>
+        <span class="text-white">GDJ</span>
+        <span class="block text-[clamp(1.5rem,5vw,3rem)] mt-2 text-neon-blue text-shadow-neon">极致舞曲体验</span>
+      </h1>
       
-      <!-- 装饰线条 -->
-      <div class="absolute inset-0 z-0">
-        <div class="absolute top-0 left-0 w-full h-1 bg-punk-red"></div>
-        <div class="absolute top-0 left-0 w-1 h-full bg-punk-red"></div>
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-punk-red"></div>
-        <div class="absolute top-0 right-0 w-1 h-full bg-punk-red"></div>
-      </div>
+      <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+        汇聚全球顶尖DJ混音作品，打造专属电子音乐盛宴，让节奏掌控你的身体
+      </p>
       
-      <div class="containeriner mx-auto px-4 py-16 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
-            <div class="inline-block px-4 py-1 bg-punk-red text-white font-bold uppercase tracking-wider text-sm transform -rotate-2">
-              电音至上
-            </div>
-            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-black leadinging-none">
-              <span class="block text-white">释放你的</span>
-              <span class="text-punk-red text-shadow-punk">电音能量</span>
-            </h1>
-            <p class="text-gray-300 text-lg max-w-md">
-              探索最前沿的电子舞曲，感受震撼节拍，让音乐掌控你的身体律动。
-            </p>
-            <div class="flex flex-wrap gap-4 pt-4">
-              <button class="bg-punk-red hover:bg-punk-red/90 text-white px-8 py-3 rounded-sm font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-2 hover:scale-105">
-                <i class="fa fa-play"></i> 立即播放
-              </button>
-              <button class="bg-transparent border-2 border-white/30 hover:border-punk-yellow text-white px-8 py-3 rounded-sm-sm font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-2">
-                <i class="fa fa-compass"></i> 探索风格
-              </button>
-            </div>
-          </div>
-          
-          <div class="relative">
-            <!-- 黑胶唱片装饰 -->
-            <div class="relative w-full max-w-md mx-auto">
-              <div class="w-full aspect-square vinylvinyl-spin">
-                <div class="aspect-squareratio-1:1 rounded-full bg-punk-black border-8 border-punk-gray relative mx-auto">
-                  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-br from-punk-red to-punk-yellow"></div>
-                  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-punk-black"></div>
-                </div>
-              </div>
-              <!-- 装饰性线条 -->
-              <div class="absolute -top-4 -left-4 w-20 h-1 bg-punk-yellow"></div>
-              <div class="absolute -bottom-4 -right-4 w-20 h-1 bg-punk-red"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 向下滚动指示 -->
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <a href="#chart" class="text-gray-400 hover:text-punk-red transition-colors">
-          <i class="fa fa-chevron-down text-2xl"></i>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#collection" class="px-8 py-3 bg-neon-purple text-white rounded-full font-semibold glow hover:bg-neon-purple/80 transition-all duration-300 beat">
+          浏览舞曲库
+        </a>
+        <a href="#" class="px-8 py-3 bg-transparent border-2 border-neon-blue text-neon-blue rounded-full font-semibold glow hover:bg-neon-blue/10 transition-all duration-300">
+          <i class="fa fa-play-circle mr-2"></i>随机播放
         </a>
       </div>
     </section>
     
-    <!-- 网易云电音榜 -->
-    <section id="chart" class="py-20 relative bg-punk-gray noise-bg">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
-          <div>
-            <h2 class="text-4xl md:text-5xl font-black mb-2">
-              <span class="text-punk-red">电音榜</span> 单曲
-            </h2>
-            <p class="text-gray-400">网易云音乐官方电音排行榜</p>
-          </div>
-          <div class="flex gap-2">
-            <span class="px-3 py-1 bg-punk-black text-sm font-bold">实时更新</span>
-            <span class="px-3 py-1 bg-punk-red/20 text-punk-red text-sm font-bold">自动播放</span>
+    <!-- 特色分类 -->
+    <section id="collection" class="mb-20">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">
+        <span class="text-neon-yellow text-shadow-neon">热门</span>舞曲风格
+      </h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 风格卡片1 -->
+        <div class="group relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer">
+          <img src="https://picsum.photos/seed/edm/600/800" alt="电子舞曲" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-2xl font-bold mb-2 text-white group-hover:text-neon-pink transition-colors">EDM</h3>
+            <p class="text-gray-300 text-sm mb-3">电子舞曲</p>
+            <div class="w-12 h-1 bg-neon-pink rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
           </div>
         </div>
         
-        <!-- 网易云音乐播放器嵌入 -->
-        <div class="bg-punk-black rounded-sm overflow-hidden border border-punk-red/30 shadow-xl">
-          <iframe 
-            src="https://music.163.com/outchain/player?type=0&id=1978921795&auto=1&height=430" 
-            width="100%" 
-            height="430" 
-            frameborder="0" 
-            allowfullscreen
-            class="w-full"
-            title="网易云音乐电音榜">
-          </iframe>
+        <!-- 风格卡片2 -->
+        <div class="group relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer">
+          <img src="https://picsum.photos/seed/house/600/800" alt="浩室音乐" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-2xl font-bold mb-2 text-white group-hover:text-neon-blue transition-colors">House</h3>
+            <p class="text-gray-300 text-sm mb-3">浩室音乐</p>
+            <div class="w-12 h-1 bg-neon-blue rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+          </div>
+        </div>
+        
+        <!-- 风格卡片3 -->
+        <div class="group relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer">
+          <img src="https://picsum.photos/seed/techno/600/800" alt="科技舞曲" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-2xl font-bold mb-2 text-white group-hover:text-neon-purple transition-colors">Techno</h3>
+            <p class="text-gray-300 text-sm mb-3">科技舞曲</p>
+            <div class="w-12 h-1 bg-neon-purple rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+          </div>
+        </div>
+        
+        <!-- 风格卡片4 -->
+        <div class="group relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer">
+          <img src="https://picsum.photos/seed/dubstep/600/800" alt="回响贝斯" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-2xl font-bold mb-2 text-white group-hover:text-neon-yellow transition-colors">Dubstep</h3>
+            <p class="text-gray-300 text-sm mb-3">回响贝斯</p>
+            <div class="w-12 h-1 bg-neon-yellow rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+          </div>
         </div>
       </div>
     </section>
     
-    <!-- 舞曲风格展示 -->
-    <section id="genres" class="py-20 relative bg-punk-black">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl md:text-5xl font-black mb-2">
-          热门<span class="text-punk-red">舞曲风格</span>
+    <!-- 最新更新 -->
+    <section class="mb-20">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold">
+          <span class="text-neon-blue text-shadow-neon">最新</span>更新
         </h2>
-        <p class="text-gray-400 mb-12">从经典到前卫，总有一款适合你</p>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- 风格卡片 1 -->
-          <div class="group relative overflow-hidden rounded-sm aspect-[3/4] cursor-pointer">
-            <img src="https://picsum.photos/id/1076/600/800" alt="Techno" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-punk-black via-punk-black/60 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-6">
-              <span class="inline-block px-3 py-1 bg-punk-red text-white text-xs font-bold uppercase tracking-wider mb-3">强硬节拍</span>
-              <h3 class="text-2xl font-bold mb-1">Techno</h3>
-              <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                起源于底特律，以重复性节拍和机械感著称
-              </p>
+        <a href="#" class="text-neon-pink hover:underline flex items-center gap-1">
+          查看全部 <i class="fa fa-arrow-right text-sm"></i>
+        </a>
+      </div>
+      
+      <div class="space-y-4">
+        <!-- 曲目项1 -->
+        <div class="bg-dark/50 backdrop-blur-sm rounded-lg p-4 border border-gray-800 hover:border-neon-pink/50 transition-all duration-300 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-neon-pink/20 rounded-md flex items-center justify-center text-neon-pink">
+              <i class="fa fa-music text-2xl"></i>
             </div>
-            <div class="absolute top-4 right-4 w-10 h-10 bg-punk-black/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-punk-red">
-              <i class="fa fa-play"></i>
-            </div>
-          </div>
-          
-          <!-- 风格卡片 2 -->
-          <div class="group relative overflow-hidden rounded-sm aspect-[3/4] cursor-pointer">
-            <img src="https://picsum.photos/id/1035/600/800" alt="House" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-punk-black via-punk-black/60 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-6">
-              <span class="inline-block px-3 py-1 bg-punk-yellow text-punk-black text-xs font-bold uppercase tracking-wider mb-3">律动之王</span>
-              <h3 class="text-2xl font-bold mb-1">House</h3>
-              <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                4/4拍节奏，适合长时间跳舞的经典电子音乐
-              </p>
-            </div>
-            <div class="absolute top-4 right-4 w-10 h-10 bg-punk-black/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-punk-red">
-              <i class="fa fa-play"></i>
+            <div>
+              <h3 class="font-bold text-lg">Electric Dreams (Remix)</h3>
+              <p class="text-gray-400 text-sm">DJ Pulse • Progressive House</p>
             </div>
           </div>
-          
-          <!-- 风格卡片 3 -->
-          <div class="group relative overflow-hidden rounded-sm aspect-[3/4] cursor-pointer">
-            <img src="https://picsum.photos/id/1082/600/800" alt="Trance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-punk-black via-punk-black/60 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-6">
-              <span class="inline-block px-3 py-1 bg-blue-500 text-white text-xs font-bold uppercase tracking-wider mb-3">旋律至上</span>
-              <h3 class="text-2xl font-bold mb-1">Trance</h3>
-              <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                沉浸式旋律，渐进式结构营造恍惚体验
-              </p>
-            </div>
-            <div class="absolute top-4 right-4 w-10 h-10 bg-punk-black/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-punk-red">
-              <i class="fa fa-play"></i>
-            </div>
-          </div>
-          
-          <!-- 风格卡片 4 -->
-          <div class="group relative overflow-hidden rounded-sm aspect-[3/4] cursor-pointer">
-            <img src="https://picsum.photos/id/1071/600/800" alt="Dubstep" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-punk-black via-punk-black/60 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-6">
-              <span class="inline-block px-3 py-1 bg-purple-600 text-white text-xs font-bold uppercase tracking-wider mb-3">重低音</span>
-              <h3 class="text-2xl font-bold mb-1">Dubstep</h3>
-              <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                强烈的贝斯和扭曲的音效，充满爆发力
-              </p>
-            </div>
-            <div class="absolute top-4 right-4 w-10 h-10 bg-punk-black/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-punk-red">
-              <i class="fa fa-play"></i>
-            </div>
+          <div class="flex items-center gap-4">
+            <button class="text-neon-blue hover:text-white transition-colors">
+              <i class="fa fa-headphones"></i> 试听
+            </button>
+            <button class="px-4 py-2 bg-neon-purple/20 text-neon-purple rounded-full text-sm hover:bg-neon-purple/30 transition-colors">
+              <i class="fa fa-download mr-1"></i> 下载
+            </button>
           </div>
         </div>
         
-        <div class="text-center mt-12">
-          <button class="border-2 border-punk-red text-punk-red hover:bg-punk-red hover:text-white px-8 py-3 rounded-sm font-bold uppercase tracking-wider transition-all duration-300">
-            查看全部风格 <i class="fa fa-arrow-right ml-2"></i>
-          </button>
+        <!-- 曲目项2 -->
+        <div class="bg-dark/50 backdrop-blur-sm rounded-lg p-4 border border-gray-800 hover:border-neon-blue/50 transition-all duration-300 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-neon-blue/20 rounded-md flex items-center justify-center text-neon-blue">
+              <i class="fa fa-music text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Neon Nights (Extended Mix)</h3>
+              <p class="text-gray-400 text-sm">DJ Voltage • Techno</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="text-neon-blue hover:text-white transition-colors">
+              <i class="fa fa-headphones"></i> 试听
+            </button>
+            <button class="px-4 py-2 bg-neon-purple/20 text-neon-purple rounded-full text-sm hover:bg-neon-purple/30 transition-colors">
+              <i class="fa fa-download mr-1"></i> 下载
+            </button>
+          </div>
+        </div>
+        
+        <!-- 曲目项3 -->
+        <div class="bg-dark/50 backdrop-blur-sm rounded-lg p-4 border border-gray-800 hover:border-neon-purple/50 transition-all duration-300 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-neon-purple/20 rounded-md flex items-center justify-center text-neon-purple">
+              <i class="fa fa-music text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Bass Drop Anthem</h3>
+              <p class="text-gray-400 text-sm">DJ Subwave • Dubstep</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="text-neon-blue hover:text-white transition-colors">
+              <i class="fa fa-headphones"></i> 试听
+            </button>
+            <button class="px-4 py-2 bg-neon-purple/20 text-neon-purple rounded-full text-sm hover:bg-neon-purple/30 transition-colors">
+              <i class="fa fa-download mr-1"></i> 下载
+            </button>
+          </div>
         </div>
       </div>
     </section>
     
-    <!-- 关于部分 -->
-    <section id="about" class="py-20 relative bg-punk-gray noise-bg">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 class="text-4xl md:text-5xl font-black mb-6">
-              关于 <span class="text-punk-red">9GDJ</span>
-            </h2>
-            <p class="text-gray-300 mb-6 text-lg">
-              9GDJ是专注于电子舞曲的音乐平台，汇集全球最热门的电音单曲、DJ现场和舞曲风格，为电音爱好者提供纯粹的音乐体验。
-            </p>
-            <p class="text-gray-300 mb-8">
-              我们致力于推广优质电子音乐，连接音乐人与爱好者，打造属于电音迷的线上家园。无论你是资深爱好者还是新手，都能在这里找到属于你的节奏。
-            </p>
-            
-            <div class="flex flex-wrap gap-6">
-              <div>
-                <p class="text-4xl font-black text-punk-red mb-1">500+</p>
-                <p class="text-gray-400 uppercase text-sm font-bold">电音风格</p>
-              </div>
-              <div>
-                <p class="text-4xl font-black text-punk-red mb-1">10k+</p>
-                <p class="text-gray-400 uppercase text-sm font-bold">电音单曲</p>
-              </div>
-              <div>
-                <p class="text-4xl font-black text-punk-red mb-1">24/7</p>
-                <p class="text-gray-400 uppercase text-sm font-bold">持续更新</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="relative">
-            <img src="https://picsum.photos/id/1059/600/400" alt="电音派对" class="w-full h-auto rounded-sm">
-            <div class="absolute -bottom-6 -left-6 bg-punk-red p-4 rounded-sm max-w-xs transform -rotate-2">
-              <p class="font-punk text-xl">加入我们的电音社区</p>
-            </div>
-          </div>
+    <!-- 订阅区域 -->
+    <section class="bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden pulse-slow">
+      <div class="absolute inset-0 grid-bg opacity-20"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">获取最新舞曲更新</h2>
+        <p class="text-gray-300 mb-8 max-w-xl mx-auto">订阅我们的推送，第一时间获取最新DJ混音作品和独家内容</p>
+        
+        <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input type="email" placeholder="输入你的邮箱" class="flex-1 bg-dark/60 border border-gray-700 rounded-full px-6 py-3 focus:outline-none focus:border-neon-pink transition-colors">
+          <button class="bg-neon-pink text-white rounded-full px-6 py-3 font-semibold glow hover:bg-neon-pink/80 transition-all">
+            立即订阅
+          </button>
         </div>
       </div>
     </section>
   </main>
   
   <!-- 页脚 -->
-  <footer class="bg-punk-black border-t border-punk-red/30 pt-16 pb-8">
+  <footer class="bg-dark border-t border-gray-800 py-10 relative z-10">
     <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <a href="#" class="flex items-center space-x-2 mb-6">
-            <div class="w-10 h-10 bg-punk-red rounded-full flex items-center justify-center">
-              <span class="font-punk text-2xl">9G</span>
-            </div>
-            <span class="font-punk text-2xl text-punk-light tracking-wider">9GDJ</span>
-          </a>
-          <p class="text-gray-400 mb-6">
-            探索电子舞曲的无限可能，让音乐掌控你的节奏。
-          </p>
+          <h3 class="text-neon-pink text-2xl font-bold text-shadow-neon mb-4">9GDJ</h3>
+          <p class="text-gray-400 mb-4">专注于提供高品质舞曲资源，打造专业电子音乐平台</p>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 bg-punk-gray flex items-center justify-center hover:bg-punk-red transition-all duration-300">
-              <i class="fa fa-facebook"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-punk-gray flex items-center justify-center hover:bg-punk-red transition-all duration-300">
-              <i class="fa fa-instagram"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-punk-gray flex items-center justify-center hover:bg-punk-red transition-all duration-300">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-punk-gray flex items-center justify-center hover:bg-punk-red transition-all duration-300">
-              <i class="fa fa-youtube-play"></i>
-            </a>
+            <a href="#" class="text-gray-400 hover:text-neon-pink transition-colors"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="text-gray-400 hover:text-neon-blue transition-colors"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 hover:text-neon-purple transition-colors"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-neon-yellow transition-colors"><i class="fa fa-youtube-play"></i></a>
           </div>
         </div>
         
         <div>
-          <h4 class="text-lg font-bold uppercase tracking-wider mb-6">快速链接</h4>
-          <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-punk-red transition-colors">首页</a></li>
-            <li><a href="#genres" class="text-gray-400 hover:text-punk-red transition-colors">舞曲风格</a></li>
-            <li><a href="#chart" class="text-gray-400 hover:text-punk-red transition-colors">电音榜单</a></li>
-            <li><a href="#about" class="text-gray-400 hover:text-punk-red transition-colors">关于我们</a></li>
+          <h4 class="text-white font-bold mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-neon-pink transition-colors">首页</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-neon-pink transition-colors">舞曲库</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-neon-pink transition-colors">排行榜</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-neon-pink transition-colors">DJ列表</a></li>
           </ul>
         </div>
         
         <div>
-          <h4 class="text-lg font-bold uppercase tracking-wider mb-6">热门风格</h4>
-          <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-punk-red transition-colors">Techno</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-punk-red transition-colors">House</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-punk-red transition-colors">Trance</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-punk-red transition-colors">Dubstep</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-punk-red transition-colors">EDM</a></li>
+          <h4 class="text-white font-bold mb-4">风格分类</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">EDM</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">House</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Techno</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-neon-blue transition-colors">Dubstep</a></li>
           </ul>
         </div>
         
         <div>
-          <h4 class="text-lg font-bold uppercase tracking-wider mb-6">联系我们</h4>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <i class="fa fa-envelope text-punk-red mt-1"></i>
-              <span class="text-gray-400">contact@9gdj.com</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fa fa-phone text-punk-red"></i>
-              <span class="text-gray-400">+86 123 4567 8910</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fa fa-map-marker text-punk-red"></i>
-              <span class="text-gray-400">北京市朝阳区</span>
-            </li>
+          <h4 class="text-white font-bold mb-4">联系我们</h4>
+          <ul class="space-y-2">
+            <li class="text-gray-400 flex items-center gap-2"><i class="fa fa-envelope text-neon-purple"></i> contact@9gdj.com</li>
+            <li class="text-gray-400 flex items-center gap-2"><i class="fa fa-headphones text-neon-purple"></i> 在线客服</li>
           </ul>
         </div>
       </div>
       
-      <div class="pt-8 border-t border-punk-gray flex flex flex-col1 md:flex-row justify-between items-center">
-        <p class="text-gray-500 text-sm mb-4 md:mb-0">
-          &copy; 2023 9GDJ. 保留所有权利。
-        </p>
-        <div class="flex gap-6">
-          <a href="#" class="text-gray-500 hover:text-gray-300 text-sm uppercase font-bold">隐私政策</a>
-          <a href="#" class="text-gray-500 hover:text-gray-300 text-sm uppercase font-bold">服务条款</a>
-        </div>
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
+        <p>© 2023 9GDJ 舞曲平台 - 所有音乐资源仅供试听，请支持正版音乐</p>
       </div>
     </div>
   </footer>
   
-  <!-- JavaScript -->
+  <!-- 简单的交互脚本 -->
   <script>
-    // 移动端菜单切换
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      const icon = menuToggle.querySelector('i');
-      if (icon.classList.contains('fa-bars')) {
-        icon.classList.replace('fa-bars', 'fa-times');
+    // 导航栏滚动效果
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('py-2');
+        nav.classList.remove('py-3');
+        nav.classList.add('bg-dark/90');
       } else {
-        icon.classList.replace('fa-times', 'fa-bars');
+        nav.classList.add('py-3');
+        nav.classList.remove('py-2');
+        nav.classList.remove('bg-dark/90');
       }
     });
     
@@ -441,36 +377,11 @@
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
-        // 关闭移动菜单（如果打开）
-        if (!mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-          const icon = menuToggle.querySelector('i');
-          icon.classList.replace('fa-times', 'fa-bars');
-        }
-        
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth'
         });
       });
     });
-    
-    // 处理自动播放 - 部分浏览器需要用户交互才能播放音频
-    // 添加页面交互事件监听器，触发播放
-    document.addEventListener('click', enableAudio, { once: true });
-    document.addEventListener('keydown', enableAudio, { once: true });
-    
-    function enableAudio() {
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach(iframe => {
-        try {
-          // 尝试与iframe通信以触发播放
-          iframe.contentWindow.postMessage('play', 'https://music.163.com');
-        } catch (e) {
-          console.log('无法触发自动播放:', e);
-        }
-      });
-    }
   </script>
 </body>
 </html>
