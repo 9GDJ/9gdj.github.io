@@ -267,20 +267,21 @@
             color: #aaa;
         }
         
-        /* 留言板样式 */
-        .message-board {
+        /* 关于我们样式 */
+        .about-section {
             width: 100%;
             background: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
-            padding: 30px;
+            padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             margin-top: 40px;
         }
         
-        .message-board h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
             background: linear-gradient(45deg, #ff00ff, #00ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -288,301 +289,162 @@
             text-align: center;
         }
         
-        .message-form {
+        .about-content {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .form-group label {
-            margin-bottom: 5px;
-            color: #ddd;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            padding: 12px 30px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            color: #000;
-            border: none;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            align-self: flex-start;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
-        }
-        
-        .messages-container {
-            max-height: 600px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-        
-        .message {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 3px solid #ff00ff;
-            position: relative;
-        }
-        
-        .message-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .message-author {
-            font-weight: 700;
-            color: #ff00ff;
-        }
-        
-        .message-date {
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        
-        .message-content {
-            color: #ddd;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-        
-        .message-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .reply-btn, .like-btn, .delete-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #ddd;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .reply-btn:hover, .like-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .delete-btn {
-            background: rgba(255, 0, 0, 0.2);
-            color: #ff6b6b;
-        }
-        
-        .delete-btn:hover {
-            background: rgba(255, 0, 0, 0.3);
-        }
-        
-        .reply-btn.active {
-            background: rgba(255, 0, 255, 0.3);
-        }
-        
-        .like-btn.liked {
-            background: rgba(255, 0, 0, 0.2);
-            color: #ff6b6b;
-        }
-        
-        .like-btn.liked i {
-            color: #ff6b6b;
-        }
-        
-        .replies {
-            margin-left: 30px;
-            margin-top: 15px;
-            border-left: 2px solid rgba(255, 255, 255, 0.1);
-            padding-left: 15px;
-        }
-        
-        .reply-form {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-        }
-        
-        .reply-form.active {
-            display: flex;
-        }
-        
-        .reply-input-group {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .reply-input-group input {
+        .about-text {
             flex: 1;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
+            min-width: 300px;
         }
         
-        .reply-submit-btn {
-            padding: 8px 15px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            color: #000;
-            border: none;
-            border-radius: 15px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #ddd;
         }
         
-        .no-messages {
-            text-align: center;
-            color: #aaa;
-            font-style: italic;
-            padding: 20px;
-        }
-        
-        /* 管理员登录弹窗 */
-        .admin-login-modal, .delete-confirm-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .admin-login-modal.active, .delete-confirm-modal.active {
-            display: flex;
-        }
-        
-        .admin-login-content, .delete-confirm-content {
-            background: rgba(30, 30, 60, 0.9);
-            padding: 30px;
+        .about-image img {
+            max-width: 100%;
             border-radius: 15px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         
-        .admin-login-content h3, .delete-confirm-content h3 {
-            margin-bottom: 20px;
+        .team-section {
+            margin-top: 40px;
+        }
+        
+        .team-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .team-member {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #000;
+        }
+        
+        .member-name {
             font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: #ff00ff;
         }
         
-        .admin-login-content p, .delete-confirm-content p {
-            margin-bottom: 25px;
+        .member-role {
+            font-size: 1rem;
+            color: #00ffff;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .member-desc {
+            font-size: 0.9rem;
             color: #ddd;
             line-height: 1.5;
         }
         
-        .admin-login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .values-section {
+            margin-top: 60px;
         }
         
-        .admin-login-form input {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            font-size: 1rem;
-        }
-        
-        .admin-login-buttons, .delete-confirm-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .admin-login-btn, .confirm-delete-btn, .cancel-delete-btn {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 25px;
+        .values-title {
+            font-size: 2rem;
             font-weight: 700;
-            cursor: pointer;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
             transition: all 0.3s ease;
         }
         
-        .admin-login-btn, .confirm-delete-btn {
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            color: #000;
+        .value-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .cancel-delete-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ddd;
-        }
-        
-        .admin-login-btn:hover, .confirm-delete-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
-        }
-        
-        .cancel-delete-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .admin-status {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 0, 255, 0.2);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: none;
-        }
-        
-        .admin-status.active {
-            display: block;
-        }
-        
-        .admin-logout-btn {
-            background: transparent;
-            border: none;
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
             color: #ff00ff;
-            margin-left: 10px;
-            cursor: pointer;
+        }
+        
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .value-desc {
+            font-size: 0.95rem;
+            color: #ddd;
+            line-height: 1.5;
         }
         
         /* 脉冲动画效果 */
@@ -656,12 +518,12 @@
                 font-size: 1.8rem;
             }
             
-            .message-board {
-                padding: 20px;
+            .about-section {
+                padding: 30px;
             }
             
-            .replies {
-                margin-left: 15px;
+            .about-title {
+                font-size: 2rem;
             }
         }
         
@@ -694,16 +556,12 @@
                 font-size: 1rem;
             }
             
-            .replies {
-                margin-left: 10px;
-            }
-            
-            .admin-login-content, .delete-confirm-content {
+            .about-section {
                 padding: 20px;
             }
             
-            .admin-login-buttons, .delete-confirm-buttons {
-                flex-direction: column;
+            .about-title {
+                font-size: 1.8rem;
             }
         }
         
@@ -740,40 +598,6 @@
 <body>
     <div class="particles" id="particles"></div>
     
-    <!-- 管理员登录弹窗 -->
-    <div class="admin-login-modal" id="adminLoginModal">
-        <div class="admin-login-content">
-            <h3><i class="fas fa-user-shield"></i> 管理员登录</h3>
-            <p>请输入管理员凭据以解锁删除权限</p>
-            <form class="admin-login-form" id="adminLoginForm">
-                <input type="text" id="adminName" placeholder="管理员昵称" required>
-                <input type="password" id="adminPassword" placeholder="管理员密码" required>
-            </form>
-            <div class="admin-login-buttons">
-                <button class="admin-login-btn" id="adminLoginBtn">登录</button>
-                <button class="cancel-delete-btn" id="cancelAdminLoginBtn">取消</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 删除确认弹窗 -->
-    <div class="delete-confirm-modal" id="deleteConfirmModal">
-        <div class="delete-confirm-content">
-            <h3><i class="fas fa-exclamation-triangle"></i> 确认删除</h3>
-            <p>您确定要删除这条内容吗？此操作无法撤销。</p>
-            <div class="delete-confirm-buttons">
-                <button class="confirm-delete-btn" id="confirmDeleteBtn">确认删除</button>
-                <button class="cancel-delete-btn" id="cancelDeleteBtn">取消</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 管理员状态指示 -->
-    <div class="admin-status" id="adminStatus">
-        <i class="fas fa-user-shield"></i> 管理员模式
-        <button class="admin-logout-btn" id="adminLogoutBtn">退出</button>
-    </div>
-    
     <div class="container">
         <header>
             <h1 class="logo floating">9GDJ</h1>
@@ -785,7 +609,7 @@
                 <a href="#">DJ混音</a>
                 <a href="#">电音专辑</a>
                 <a href="#">排行榜</a>
-                <a href="#" id="adminLoginLink">管理员登录</a>
+                <a href="#about">关于我们</a>
             </nav>
         </header>
         
@@ -830,33 +654,103 @@
             </div>
         </div>
         
-        <!-- 留言板部分 -->
-        <div class="message-board">
-            <h2><i class="fas fa-comments"></i> 资源互助留言板</h2>
-            <p style="text-align: center; color: #aaa; margin-bottom: 20px;">无需注册即可留言和回复，分享您的音乐资源和想法</p>
+        <!-- 关于我们部分 -->
+        <div class="about-section" id="about">
+            <h2 class="about-title">关于 9GDJ</h2>
             
-            <form class="message-form" id="messageForm">
-                <div class="form-group">
-                    <label for="author">昵称</label>
-                    <input type="text" id="author" placeholder="请输入您的昵称" required>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>9GDJ 成立于 2018 年，是一家专注于电子舞曲分享与推广的在线平台。我们的使命是让更多人感受电子音乐的魅力，为全球电音爱好者提供最新、最热门的舞曲资源。</p>
+                    
+                    <p>我们不是舞曲的生产者，而是优质舞曲的搬运工。通过精心筛选和整理，我们汇集了来自世界各地的优秀电子音乐作品，包括 House、Techno、Trance、Dubstep 等多种风格。</p>
+                    
+                    <p>我们的团队由一群热爱电子音乐的资深DJ和音乐制作人组成，他们对音乐有着敏锐的洞察力和深刻的理解，确保我们推荐的每一首作品都能触动您的灵魂。</p>
+                    
+                    <p>除了音乐分享，9GDJ 还定期举办线上音乐节和 DJ 比赛，为新兴 DJ 提供展示才华的平台，推动电子音乐文化的传播与发展。</p>
                 </div>
                 
-                <div class="form-group">
-                    <label for="content">留言内容</label>
-                    <textarea id="content" placeholder="分享您的音乐资源或想法..." required></textarea>
+                <div class="about-image">
+                    <!-- 这里可以放置关于我们的图片 -->
+                    <div style="width: 100%; height: 300px; background: linear-gradient(45deg, #ff00ff, #00ffff); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold; font-size: 1.5rem;">
+                        9GDJ 音乐世界
+                    </div>
                 </div>
-                
-                <button type="submit" class="submit-btn">发布留言</button>
-            </form>
+            </div>
             
-            <div class="messages-container" id="messagesContainer">
-                <!-- 留言将在这里动态生成 -->
-                <div class="no-messages" id="noMessages">暂无留言，快来发表第一条吧！</div>
+            <div class="team-section">
+                <h3 class="team-title">我们的团队</h3>
+                
+                <div class="team-members">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4 class="member-name">DJ Spark</h4>
+                        <p class="member-role">创始人 & 首席音乐策划</p>
+                        <p class="member-desc">拥有10年DJ经验，曾在多个国际音乐节表演，对电子音乐有着独到的见解和品味。</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4 class="member-name">Bass Queen</h4>
+                        <p class="member-role">内容总监</p>
+                        <p class="member-desc">音乐制作人出身，精通多种电子音乐风格，负责平台内容的质量把控和风格定位。</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4 class="member-name">Mix Master</h4>
+                        <p class="member-role">技术负责人</p>
+                        <p class="member-desc">负责平台技术开发和用户体验优化，确保用户能够流畅地享受音乐之旅。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="values-section">
+                <h3 class="values-title">我们的价值观</h3>
+                
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="value-title">热爱音乐</h4>
+                        <p class="value-desc">我们对电子音乐充满热情，致力于分享最优质的音乐作品，让更多人感受电子音乐的魅力。</p>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="value-title">社区精神</h4>
+                        <p class="value-desc">我们相信音乐的力量能够连接人们，构建一个积极、包容的电子音乐爱好者社区。</p>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="value-title">追求卓越</h4>
+                        <p class="value-desc">我们不断追求更高的质量标准，确保为用户提供最新、最优质的电子音乐体验。</p>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4 class="value-title">全球视野</h4>
+                        <p class="value-desc">我们关注全球电子音乐发展趋势，将世界各地优秀的音乐作品带给中国听众。</p>
+                    </div>
+                </div>
             </div>
         </div>
         
         <footer>
-            <p>© 2012-2025 9GDJ | 让世界感受电音的魅力</p>
+            <p>© 2023 9GDJ 舞曲搬运工 | 让世界感受电音的魅力</p>
             <div class="social-links">
                 <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
@@ -931,483 +825,19 @@
             }, 150);
         });
         
-        // 留言板功能
-        const messageForm = document.getElementById('messageForm');
-        const messagesContainer = document.getElementById('messagesContainer');
-        const noMessages = document.getElementById('noMessages');
-        
-        // 管理员相关元素
-        const adminLoginModal = document.getElementById('adminLoginModal');
-        const adminLoginForm = document.getElementById('adminLoginForm');
-        const adminLoginBtn = document.getElementById('adminLoginBtn');
-        const cancelAdminLoginBtn = document.getElementById('cancelAdminLoginBtn');
-        const adminLoginLink = document.getElementById('adminLoginLink');
-        const adminStatus = document.getElementById('adminStatus');
-        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-        
-        // 删除确认弹窗元素
-        const deleteConfirmModal = document.getElementById('deleteConfirmModal');
-        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
-        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
-        
-        // 当前要删除的项目信息
-        let currentDeleteInfo = {
-            type: null, // 'message' 或 'reply'
-            id: null,
-            parentId: null, // 仅回复需要
-            author: null // 作者信息，用于权限判断
-        };
-        
-        // 管理员凭据
-        const ADMIN_CREDENTIALS = {
-            name: '9GDJ',
-            password: '9GDJ@2025'
-        };
-        
-        // 生成唯一ID
-        function generateId() {
-            return Date.now().toString(36) + Math.random().toString(36).substr(2);
-        }
-        
-        // 从localStorage加载留言
-        function loadMessages() {
-            const messages = JSON.parse(localStorage.getItem('9gdj_messages')) || [];
-            
-            if (messages.length > 0) {
-                noMessages.style.display = 'none';
-                messagesContainer.innerHTML = '';
-                
-                // 按时间倒序显示留言
-                messages.reverse().forEach(message => {
-                    renderMessage(message);
-                });
-            } else {
-                noMessages.style.display = 'block';
-            }
-        }
-        
-        // 渲染单个留言
-        function renderMessage(message) {
-            const messageElement = document.createElement('div');
-            messageElement.className = 'message';
-            messageElement.setAttribute('data-id', message.id);
-            
-            // 获取点赞数据
-            const likes = JSON.parse(localStorage.getItem('9gdj_likes')) || {};
-            const isLiked = likes[message.id] === true;
-            
-            let repliesHtml = '';
-            if (message.replies && message.replies.length > 0) {
-                repliesHtml = '<div class="replies">';
-                message.replies.forEach(reply => {
-                    // 获取回复点赞数据
-                    const replyIsLiked = likes[reply.id] === true;
-                    
-                    repliesHtml += `
-                        <div class="message">
-                            <div class="message-header">
-                                <span class="message-author">${reply.author}</span>
-                                <span class="message-date">${reply.date}</span>
-                            </div>
-                            <div class="message-content">${reply.content}</div>
-                            <div class="message-actions">
-                                <button class="like-btn ${replyIsLiked ? 'liked' : ''}" data-id="${reply.id}" data-type="reply">
-                                    <i class="fas fa-heart"></i> ${replyIsLiked ? '已点赞' : '点赞'}
-                                </button>
-                                ${canDelete(reply.author) ? `
-                                <button class="delete-btn" data-type="reply" data-id="${reply.id}" data-parentid="${message.id}" data-author="${reply.author}">
-                                    <i class="fas fa-trash"></i> 删除
-                                </button>
-                                ` : ''}
-                            </div>
-                        </div>
-                    `;
-                });
-                repliesHtml += '</div>';
-            }
-            
-            messageElement.innerHTML = `
-                <div class="message-header">
-                    <span class="message-author">${message.author}</span>
-                    <span class="message-date">${message.date}</span>
-                </div>
-                <div class="message-content">${message.content}</div>
-                <div class="message-actions">
-                    <button class="reply-btn" data-id="${message.id}">
-                        <i class="fas fa-reply"></i> 回复
-                    </button>
-                    <button class="like-btn ${isLiked ? 'liked' : ''}" data-id="${message.id}" data-type="message">
-                        <i class="fas fa-heart"></i> ${isLiked ? '已点赞' : '点赞'}
-                    </button>
-                    ${canDelete(message.author) ? `
-                    <button class="delete-btn" data-type="message" data-id="${message.id}" data-author="${message.author}">
-                        <i class="fas fa-trash"></i> 删除
-                    </button>
-                    ` : ''}
-                </div>
-                <form class="reply-form" data-parentid="${message.id}">
-                    <div class="reply-input-group">
-                        <input type="text" class="reply-author" placeholder="你的昵称" required>
-                        <input type="text" class="reply-content" placeholder="回复内容" required>
-                        <button type="submit" class="reply-submit-btn">回复</button>
-                    </div>
-                </form>
-                ${repliesHtml}
-            `;
-            
-            messagesContainer.appendChild(messageElement);
-            
-            // 绑定回复按钮事件
-            const replyBtn = messageElement.querySelector('.reply-btn');
-            replyBtn.addEventListener('click', function() {
-                const parentId = this.getAttribute('data-id');
-                const replyForm = document.querySelector(`.reply-form[data-parentid="${parentId}"]`);
-                replyForm.classList.toggle('active');
-                this.classList.toggle('active');
-            });
-            
-            // 绑定回复表单提交事件
-            const replyForm = messageElement.querySelector('.reply-form');
-            replyForm.addEventListener('submit', function(e) {
+        // 平滑滚动到关于我们部分
+        document.querySelectorAll('nav a[href="#about"]').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const parentId = this.getAttribute('data-parentid');
-                const author = this.querySelector('.reply-author').value.trim();
-                const content = this.querySelector('.reply-content').value.trim();
-                
-                if (!author || !content) {
-                    alert('请填写昵称和回复内容！');
-                    return;
-                }
-                
-                addReply(parentId, author, content);
-                
-                // 清空表单
-                this.reset();
-                this.classList.remove('active');
-                
-                // 重置回复按钮状态
-                const replyBtn = document.querySelector(`.reply-btn[data-id="${parentId}"]`);
-                replyBtn.classList.remove('active');
-            });
-            
-            // 绑定点赞按钮事件 - 留言
-            const likeBtn = messageElement.querySelector('.like-btn[data-type="message"]');
-            likeBtn.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                const type = this.getAttribute('data-type');
-                toggleLike(id, type, this);
-            });
-            
-            // 绑定点赞按钮事件 - 回复
-            const replyLikeBtns = messageElement.querySelectorAll('.like-btn[data-type="reply"]');
-            replyLikeBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const type = this.getAttribute('data-type');
-                    toggleLike(id, type, this);
+                document.getElementById('about').scrollIntoView({
+                    behavior: 'smooth'
                 });
             });
-            
-            // 绑定删除按钮事件 - 留言
-            const deleteBtn = messageElement.querySelector('.delete-btn[data-type="message"]');
-            if (deleteBtn) {
-                deleteBtn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const author = this.getAttribute('data-author');
-                    showDeleteConfirm('message', id, null, author);
-                });
-            }
-            
-            // 绑定删除按钮事件 - 回复
-            const replyDeleteBtns = messageElement.querySelectorAll('.delete-btn[data-type="reply"]');
-            replyDeleteBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const parentId = this.getAttribute('data-parentid');
-                    const author = this.getAttribute('data-author');
-                    showDeleteConfirm('reply', id, parentId, author);
-                });
-            });
-        }
-        
-        // 检查是否有删除权限
-        function canDelete(author) {
-            // 如果是管理员模式，可以删除任何内容
-            if (isAdminMode()) return true;
-            
-            // 否则只能删除自己发布的内容
-            // 这里需要获取当前用户的昵称，我们可以从localStorage获取
-            // 或者从最近发布的留言中获取
-            const currentUser = localStorage.getItem('9gdj_current_user');
-            return currentUser === author;
-        }
-        
-        // 检查是否是管理员模式
-        function isAdminMode() {
-            return localStorage.getItem('9gdj_admin_logged_in') === 'true';
-        }
-        
-        // 显示删除确认弹窗
-        function showDeleteConfirm(type, id, parentId = null, author = null) {
-            currentDeleteInfo = {
-                type: type,
-                id: id,
-                parentId: parentId,
-                author: author
-            };
-            
-            deleteConfirmModal.classList.add('active');
-        }
-        
-        // 确认删除
-        confirmDeleteBtn.addEventListener('click', function() {
-            if (currentDeleteInfo.type === 'message') {
-                deleteMessage(currentDeleteInfo.id);
-            } else if (currentDeleteInfo.type === 'reply') {
-                deleteReply(currentDeleteInfo.parentId, currentDeleteInfo.id);
-            }
-            
-            deleteConfirmModal.classList.remove('active');
         });
         
-        // 取消删除
-        cancelDeleteBtn.addEventListener('click', function() {
-            deleteConfirmModal.classList.remove('active');
-        });
-        
-        // 点击弹窗外部关闭
-        deleteConfirmModal.addEventListener('click', function(e) {
-            if (e.target === deleteConfirmModal) {
-                deleteConfirmModal.classList.remove('active');
-            }
-        });
-        
-        // 删除留言
-        function deleteMessage(id) {
-            const messages = JSON.parse(localStorage.getItem('9gdj_messages')) || [];
-            const updatedMessages = messages.filter(message => message.id !== id);
-            
-            localStorage.setItem('9gdj_messages', JSON.stringify(updatedMessages));
-            loadMessages();
-            
-            // 显示删除成功提示
-            showNotification('留言已删除');
-        }
-        
-        // 删除回复
-        function deleteReply(parentId, replyId) {
-            const messages = JSON.parse(localStorage.getItem('9gdj_messages')) || [];
-            
-            // 查找父级留言
-            const parentMessage = messages.find(msg => msg.id === parentId);
-            if (!parentMessage || !parentMessage.replies) return;
-            
-            // 过滤掉要删除的回复
-            parentMessage.replies = parentMessage.replies.filter(reply => reply.id !== replyId);
-            
-            localStorage.setItem('9gdj_messages', JSON.stringify(messages));
-            loadMessages();
-            
-            // 显示删除成功提示
-            showNotification('回复已删除');
-        }
-        
-        // 点赞功能
-        function toggleLike(id, type, button) {
-            const likes = JSON.parse(localStorage.getItem('9gdj_likes')) || {};
-            const isLiked = likes[id] === true;
-            
-            if (isLiked) {
-                // 取消点赞
-                delete likes[id];
-                button.classList.remove('liked');
-                button.innerHTML = '<i class="fas fa-heart"></i> 点赞';
-            } else {
-                // 点赞
-                likes[id] = true;
-                button.classList.add('liked');
-                button.innerHTML = '<i class="fas fa-heart"></i> 已点赞';
-            }
-            
-            localStorage.setItem('9gdj_likes', JSON.stringify(likes));
-        }
-        
-        // 显示通知
-        function showNotification(message) {
-            // 创建通知元素
-            const notification = document.createElement('div');
-            notification.textContent = message;
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: rgba(255, 0, 255, 0.8);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 10px;
-                z-index: 1001;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-                backdrop-filter: blur(10px);
-                animation: slideIn 0.3s ease-out;
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // 3秒后自动移除
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease-in';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-        
-        // 添加CSS动画
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // 管理员登录功能
-        adminLoginLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            adminLoginModal.classList.add('active');
-        });
-        
-        adminLoginBtn.addEventListener('click', function() {
-            const name = document.getElementById('adminName').value.trim();
-            const password = document.getElementById('adminPassword').value.trim();
-            
-            if (name === ADMIN_CREDENTIALS.name && password === ADMIN_CREDENTIALS.password) {
-                // 登录成功
-                localStorage.setItem('9gdj_admin_logged_in', 'true');
-                adminStatus.classList.add('active');
-                adminLoginModal.classList.remove('active');
-                showNotification('管理员登录成功！');
-                
-                // 重新加载留言以显示删除按钮
-                loadMessages();
-            } else {
-                alert('管理员凭据错误！');
-            }
-        });
-        
-        cancelAdminLoginBtn.addEventListener('click', function() {
-            adminLoginModal.classList.remove('active');
-        });
-        
-        // 管理员退出功能
-        adminLogoutBtn.addEventListener('click', function() {
-            localStorage.removeItem('9gdj_admin_logged_in');
-            adminStatus.classList.remove('active');
-            showNotification('已退出管理员模式');
-            
-            // 重新加载留言以隐藏删除按钮
-            loadMessages();
-        });
-        
-        // 点击管理员登录弹窗外部关闭
-        adminLoginModal.addEventListener('click', function(e) {
-            if (e.target === adminLoginModal) {
-                adminLoginModal.classList.remove('active');
-            }
-        });
-        
-        // 添加回复
-        function addReply(parentId, author, content) {
-            const messages = JSON.parse(localStorage.getItem('9gdj_messages')) || [];
-            
-            // 查找父级留言
-            const parentMessage = messages.find(msg => msg.id === parentId);
-            if (!parentMessage) return;
-            
-            // 创建回复对象
-            const reply = {
-                id: generateId(),
-                author: author,
-                content: content,
-                date: new Date().toLocaleString('zh-CN')
-            };
-            
-            // 初始化回复数组（如果不存在）
-            if (!parentMessage.replies) {
-                parentMessage.replies = [];
-            }
-            
-            // 添加回复
-            parentMessage.replies.push(reply);
-            
-            // 保存到localStorage
-            localStorage.setItem('9gdj_messages', JSON.stringify(messages));
-            
-            // 重新加载留言
-            loadMessages();
-            
-            // 显示成功提示
-            showNotification('回复发布成功！');
-        }
-        
-        // 提交留言
-        messageForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const author = document.getElementById('author').value.trim();
-            const content = document.getElementById('content').value.trim();
-            
-            if (!author || !content) {
-                alert('请填写昵称和留言内容！');
-                return;
-            }
-            
-            // 保存当前用户昵称
-            localStorage.setItem('9gdj_current_user', author);
-            
-            // 创建新留言
-            const newMessage = {
-                id: generateId(),
-                author: author,
-                content: content,
-                date: new Date().toLocaleString('zh-CN'),
-                replies: []
-            };
-            
-            // 获取现有留言
-            const messages = JSON.parse(localStorage.getItem('9gdj_messages')) || [];
-            
-            // 添加新留言
-            messages.push(newMessage);
-            
-            // 保存到localStorage
-            localStorage.setItem('9gdj_messages', JSON.stringify(messages));
-            
-            // 重新加载留言
-            loadMessages();
-            
-            // 清空表单
-            messageForm.reset();
-            
-            // 显示成功提示
-            showNotification('留言发布成功！');
-        });
-        
-        // 页面加载完成后创建粒子和加载留言
+        // 页面加载完成后创建粒子
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
-            loadMessages();
-            
-            // 检查是否已经是管理员模式
-            if (isAdminMode()) {
-                adminStatus.classList.add('active');
-            }
         });
     </script>
 </body>
