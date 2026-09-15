@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中深智策(深圳)数字科技有限公司</title>
+    <meta name="description" content="中深智策(深圳)数字科技有限公司，专注数字科技、数字化解决方案、数据服务、产业数字化落地">
+    <meta name="keywords" content="中深智策,深圳数字科技,数字化转型,数据要素,数字解决方案">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tech: {
+                            900: '#050B1F',
+                            800: '#0A1234',
+                            700: '#101A47',
+                            600: '#14215C',
+                            500: '#1B2D7A',
+                            400: '#2E4BDE',
+                            300: '#4F7CFF',
+                            200: '#8BA8FF',
+                            100: '#C7D4FF'
+                        },
+                        electric: {
+                            blue: '#00B8FF',
+                            purple: '#7C5CFF',
+                            pink: '#B14AFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'tech': '0 10px 40px rgba(0, 184, 255, 0.25)',
+                        'tech-purple': '0 10px 40px rgba(124, 92, 255, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-gradient-tech {
+                background: linear-gradient(90deg, #00B8FF 0%, #7C5CFF 50%, #B14AFF 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+            .bg-grid-tech {
+                background-image:
+                    linear-gradient(rgba(0, 184, 255, 0.08) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 184, 255, 0.08) 1px, transparent 1px);
+                background-size: 40px 40px;
+            }
+            .bg-radial-tech {
+                background: radial-gradient(circle at top right, rgba(124, 92, 255, 0.25), transparent 40%),
+                            radial-gradient(circle at bottom left, rgba(0, 184, 255, 0.25), transparent 40%),
+                            linear-gradient(180deg, #050B1F 0%, #0A1234 100%);
+            }
+            .card-tech {
+                background: linear-gradient(145deg, rgba(20, 33, 92, 0.8), rgba(10, 18, 52, 0.9));
+                border: 1px solid rgba(0, 184, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
+            .card-tech-hover {
+                transition: all 0.35s ease;
+            }
+            .card-tech-hover:hover {
+                transform: translateY(-8px);
+                border-color: rgba(0, 184, 255, 0.6);
+                box-shadow: 0 20px 50px rgba(0, 184, 255, 0.25), 0 0 0 1px rgba(124, 92, 255, 0.4);
+            }
+            .border-gradient-tech {
+                position: relative;
+            }
+            .border-gradient-tech::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+                padding: 1px;
+                background: linear-gradient(135deg, #00B8FF, #7C5CFF, transparent);
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                        mask-composite: exclude;
+                pointer-events: none;
+            }
+            .glow-dot {
+                box-shadow: 0 0 12px rgba(0, 184, 255, 0.8), 0 0 24px rgba(124, 92, 255, 0.5);
+            }
+        }
+    </style>
+</head>
+<body class="bg-tech-900 font-sans text-tech-100 overflow-x-hidden">
+
+    <!-- 背景科技装饰 -->
+    <div class="fixed inset-0 bg-grid-tech opacity-40 pointer-events-none"></div>
+    <div class="fixed top-20 left-10 w-72 h-72 bg-electric-blue rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+    <div class="fixed bottom-20 right-10 w-96 h-96 bg-electric-purple rounded-full blur-[140px] opacity-20 pointer-events-none"></div>
+
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex justify-between items-center h-[72px]">
+                <a href="#" class="flex items-center gap-3 relative z-10">
+                    <div class="relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-electric-blue to-electric-purple"></div>
+                        <span class="relative text-white font-bold text-lg">中深</span>
+                    </div>
+                    <span class="text-white font-bold text-lg md:text-xl hidden sm:block">中深智策(深圳)数字科技</span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="text-tech-100 hover:text-electric-blue transition-colors">首页</a>
+                    <a href="#about" class="text-tech-100 hover:text-electric-blue transition-colors">关于我们</a>
+                    <a href="#business" class="text-tech-100 hover:text-electric-blue transition-colors">业务板块</a>
+                    <a href="#cases" class="text-tech-100 hover:text-electric-blue transition-colors">项目案例</a>
+                    <a href="#contact" class="text-tech-100 hover:text-electric-blue transition-colors">联系我们</a>
+                </nav>
+
+                <button id="menuBtn" class="md:hidden text-white text-2xl relative z-10">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-tech-800/95 backdrop-blur-md border-t border-electric-blue/20">
+            <div class="container mx-auto px-4 py-4 flex flex-col gap-4">
+                <a href="#home" class="text-tech-100 py-2 hover:text-electric-blue">首页</a>
+                <a href="#about" class="text-tech-100 py-2 hover:text-electric-blue">关于我们</a>
+                <a href="#business" class="text-tech-100 py-2 hover:text-electric-blue">业务板块</a>
+                <a href="#cases" class="text-tech-100 py-2 hover:text-electric-blue">项目案例</a>
+                <a href="#contact" class="text-tech-100 py-2 hover:text-electric-blue">联系我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首页Banner -->
+    <section id="home" class="relative min-h-screen flex items-center pt-[72px] bg-radial-tech overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6 py-16 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-electric-blue/10 border border-electric-blue/30 text-electric-blue text-sm">
+                        <span class="w-2 h-2 rounded-full bg-electric-blue glow-dot"></span>
+                        数字科技 · 产业赋能
+                    </div>
+                    <h1 class="mt-6 text-[clamp(2.2rem,5vw,3.8rem)] font-bold leading-tight text-white">
+                        数字智策<br>
+                        <span class="text-gradient-tech">赋能产业未来</span>
+                    </h1>
+                    <p class="mt-6 text-tech-200 text-lg md:text-xl leading-relaxed max-w-xl">
+                        中深智策(深圳)数字科技有限公司，立足深圳，深耕数据要素、产业数字化、数字资产运营与数字化解决方案，为政企客户提供全链路数字科技服务。
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#contact" class="group px-7 py-3 rounded-lg text-white font-medium bg-gradient-to-r from-electric-blue to-electric-purple hover:shadow-tech transition-all">
+                            立即咨询
+                            <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#about" class="px-7 py-3 rounded-lg text-white font-medium border border-electric-blue/40 hover:bg-electric-blue/10 transition-all">
+                            了解更多
+                        </a>
+                    </div>
+
+                    <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg">
+                        <div>
+                            <div class="text-2xl md:text-3xl font-bold text-white">数据</div>
+                            <div class="text-sm text-tech-300 mt-1">要素服务</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-bold text-white">平台</div>
+                            <div class="text-sm text-tech-300 mt-1">系统研发</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-bold text-white">产业</div>
+                            <div class="text-sm text-tech-300 mt-1">运营赋能</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden md:block relative">
+                    <div class="relative aspect-square max-w-[520px] mx-auto">
+                        <div class="absolute inset-0 rounded-full border border-electric-blue/20"></div>
+                        <div class="absolute inset-6 rounded-full border border-electric-purple/20"></div>
+                        <div class="absolute inset-12 rounded-full border border-electric-blue/10"></div>
+
+                        <div class="absolute top-10 left-10 w-16 h-16 rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-2xl shadow-tech">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <div class="absolute top-24 right-6 w-14 h-14 rounded-xl bg-tech-700 border border-electric-blue/40 flex items-center justify-center text-electric-blue text-xl">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <div class="absolute bottom-20 left-6 w-14 h-14 rounded-xl bg-tech-700 border border-electric-purple/40 flex items-center justify-center text-electric-purple text-xl">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div class="absolute bottom-10 right-14 w-16 h-16 rounded-xl bg-gradient-to-br from-electric-purple to-electric-pink flex items-center justify-center text-white text-2xl shadow-tech-purple">
+                            <i class="fa-solid fa-cloud"></i>
+                        </div>
+
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center">
+                            <div class="w-32 h-32 rounded-full bg-tech-900 flex items-center justify-center">
+                                <i class="fa-solid fa-shield-halved text-5xl text-white"></i>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-8 left-1/2 w-1 h-1 rounded-full bg-electric-blue glow-dot"></div>
+                        <div class="absolute bottom-8 left-1/3 w-1 h-1 rounded-full bg-electric-purple glow-dot"></div>
+                        <div class="absolute right-8 top-1/3 w-1 h-1 rounded-full bg-electric-pink glow-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="relative py-24 bg-tech-800">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block px-4 py-1 rounded-full bg-electric-blue/10 border border-electric-blue/30 text-electric-blue text-sm mb-4">
+                    ABOUT US
+                </div>
+                <h2 class="text-[clamp(1.8rem,3vw,2.6rem)] font-bold text-white">关于我们</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric-blue to-electric-purple mx-auto mt-4"></div>
+                <p class="mt-6 text-tech-200 max-w-2xl mx-auto">
+                    中深智策(深圳)数字科技有限公司，专注数字科技领域创新落地
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-br from-electric-blue/20 to-electric-purple/20 rounded-3xl blur-2xl"></div>
+                    <div class="relative rounded-2xl overflow-hidden border border-electric-blue/20 card-tech p-3">
+                        <img src="https://picsum.photos/id/180/700/500" alt="公司介绍" class="rounded-xl w-full h-auto">
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-white">企业简介</h3>
+                    <p class="mt-5 text-tech-200 leading-relaxed">
+                        中深智策(深圳)数字科技有限公司注册于深圳，聚焦数据要素市场化、产业数字化转型、数字资产体系搭建、数字化平台开发、商业模型顶层设计等方向。
+                    </p>
+                    <p class="mt-4 text-tech-200 leading-relaxed">
+                        公司汇集数字经济、平台技术、资本运营、产业落地等复合型人才，面向政府机构、产业集团、平台企业提供从顶层规划、系统开发到运营落地的一体化数字智策服务。
+                    </p>
+
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="card-tech card-tech-hover rounded-xl p-5 border-gradient-tech">
+                            <div class="text-electric-blue text-xl mb-2"><i class="fa-solid fa-sitemap"></i></div>
+                            <h4 class="text-white font-semibold">数字顶层方案</h4>
+                            <p class="text-sm text-tech-300 mt-1">产业数字化顶层设计与规划咨询</p>
+                        </div>
+                        <div class="card-tech card-tech-hover rounded-xl p-5 border-gradient-tech">
+                            <div class="text-electric-blue text-xl mb-2"><i class="fa-solid fa-industry"></i></div>
+                            <h4 class="text-white font-semibold">产业数字化落地</h4>
+                            <p class="text-sm text-tech-300 mt-1">面向产业场景的数字化实施路径</p>
+                        </div>
+                        <div class="card-tech card-tech-hover rounded-xl p-5 border-gradient-tech">
+                            <div class="text-electric-blue text-xl mb-2"><i class="fa-solid fa-database"></i></div>
+                            <h4 class="text-white font-semibold">数据要素服务</h4>
+                            <p class="text-sm text-tech-300 mt-1">数据资产化与数据交易咨询服务</p>
+                        </div>
+                        <div class="card-tech card-tech-hover rounded-xl p-5 border-gradient-tech">
+                            <div class="text-electric-blue text-xl mb-2"><i class="fa-solid fa-code"></i></div>
+                            <h4 class="text-white font-semibold">平台系统研发</h4>
+                            <p class="text-sm text-tech-300 mt-1">定制化数字平台与业务系统开发</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 业务板块 -->
+    <section id="business" class="relative py-24 bg-tech-900">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block px-4 py-1 rounded-full bg-electric-purple/10 border border-electric-purple/30 text-electric-purple text-sm mb-4">
+                    BUSINESS
+                </div>
+                <h2 class="text-[clamp(1.8rem,3vw,2.6rem)] font-bold text-white">业务板块</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric-blue to-electric-purple mx-auto mt-4"></div>
+                <p class="mt-6 text-tech-200 max-w-2xl mx-auto">
+                    多维数字业务矩阵，为客户定制数字化解决方案
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-tech card-tech-hover rounded-2xl p-8 border-gradient-tech">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                        <i class="fa-solid fa-sitemap"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-6 text-white">数字化顶层规划</h3>
+                    <p class="mt-3 text-tech-200 text-sm leading-relaxed">
+                        产业数字化顶层设计、商业模式梳理、合规体系搭建、项目可研与方案编制。
+                    </p>
+                    <div class="mt-5 flex items-center text-electric-blue text-sm">
+                        <span>了解详情</span>
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+
+                <div class="card-tech card-tech-hover rounded-2xl p-8 border-gradient-tech">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-6 text-white">数据要素服务</h3>
+                    <p class="mt-3 text-tech-200 text-sm leading-relaxed">
+                        数据资源梳理、数据资产化、数据交易咨询、数据合规治理与应用落地。
+                    </p>
+                    <div class="mt-5 flex items-center text-electric-blue text-sm">
+                        <span>了解详情</span>
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+
+                <div class="card-tech card-tech-hover rounded-2xl p-8 border-gradient-tech">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-6 text-white">平台系统开发</h3>
+                    <p class="mt-3 text-tech-200 text-sm leading-relaxed">
+                        数字平台、商城系统、资产管理系统、业务管理平台定制开发与运维。
+                    </p>
+                    <div class="mt-5 flex items-center text-electric-blue text-sm">
+                        <span>了解详情</span>
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+
+                <div class="card-tech card-tech-hover rounded-2xl p-8 border-gradient-tech">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-6 text-white">产业运营赋能</h3>
+                    <p class="mt-3 text-tech-200 text-sm leading-relaxed">
+                        产业项目运营策划、流量体系搭建、生态合作设计、收益模型设计。
+                    </p>
+                    <div class="mt-5 flex items-center text-electric-blue text-sm">
+                        <span>了解详情</span>
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+
+                <div class="card-tech card-tech-hover rounded-2xl p-8 border-gradient-tech">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-6 text-white">数字资产咨询</h3>
+                    <p class="mt-3 text-tech-200 text-sm leading-relaxed">
+                        数字资产流转体系设计、产品规则设计、风控体系、交易场景咨询。
+                    </p>
+                    <div class="mt-5 flex items-center text-electric-blue text-sm">
+                        <span>了解详情</span>
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+
+                <div class="card-tech card-tech-hover rounded-2xl p-8 border-gradient-tech">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-6 text-white">政企项目合作</h3>
+                    <p class="mt-3 text-tech-200 text-sm leading-relaxed">
+                        政企数字化项目对接、联合申报、课题研究、项目落地全流程服务。
+                    </p>
+                    <div class="mt-5 flex items-center text-electric-blue text-sm">
+                        <span>了解详情</span>
+                        <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目案例 -->
+    <section id="cases" class="relative py-24 bg-tech-800">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block px-4 py-1 rounded-full bg-electric-pink/10 border border-electric-pink/30 text-electric-pink text-sm mb-4">
+                    CASES
+                </div>
+                <h2 class="text-[clamp(1.8rem,3vw,2.6rem)] font-bold text-white">项目案例</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric-blue to-electric-purple mx-auto mt-4"></div>
+                <p class="mt-6 text-tech-200 max-w-2xl mx-auto">
+                    产业数字化、数据要素相关落地项目
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="rounded-2xl overflow-hidden card-tech border border-electric-blue/20 card-tech-hover">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://picsum.photos/id/20/600/400" alt="案例1" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-tech-900 to-transparent"></div>
+                        <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-electric-blue/90 text-white text-xs">
+                            数据平台
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg text-white">产业数据平台搭建</h3>
+                        <p class="mt-2 text-tech-200 text-sm">面向产业集团的数据资源管理与数据应用平台建设项目</p>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden card-tech border border-electric-blue/20 card-tech-hover">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://picsum.photos/id/42/600/400" alt="案例2" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-tech-900 to-transparent"></div>
+                        <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-electric-purple/90 text-white text-xs">
+                            生态系统
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg text-white">数字商城与生态系统</h3>
+                        <p class="mt-2 text-tech-200 text-sm">消费积分、产业商品流转一体化商城系统开发与运营方案</p>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden card-tech border border-electric-blue/20 card-tech-hover">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://picsum.photos/id/28/600/400" alt="案例3" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-tech-900 to-transparent"></div>
+                        <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-electric-pink/90 text-white text-xs">
+                            顶层方案
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg text-white">政企数字化顶层方案</h3>
+                        <p class="mt-2 text-tech-200 text-sm">地方产业数字化转型规划、数据要素项目方案咨询服务</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="relative py-24 bg-tech-900">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block px-4 py-1 rounded-full bg-electric-blue/10 border border-electric-blue/30 text-electric-blue text-sm mb-4">
+                    CONTACT US
+                </div>
+                <h2 class="text-[clamp(1.8rem,3vw,2.6rem)] font-bold text-white">联系我们</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-electric-blue to-electric-purple mx-auto mt-4"></div>
+                <p class="mt-6 text-tech-200 max-w-2xl mx-auto">
+                    欢迎商务洽谈、项目合作，期待携手共建数字产业新生态
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="card-tech card-tech-hover rounded-2xl p-6 text-center border-gradient-tech">
+                        <div class="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h4 class="mt-5 text-white font-semibold">公司地址</h4>
+                        <p class="mt-2 text-tech-200 text-sm">深圳市宝安区新安街道海旺社区84区裕安一路3078号宝鸿林大厦十六层B（前海合作区）</p>
+                    </div>
+
+                    <div class="card-tech card-tech-hover rounded-2xl p-6 text-center border-gradient-tech">
+                        <div class="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <h4 class="mt-5 text-white font-semibold">联系电话</h4>
+                        <p class="mt-2 text-tech-200 text-sm">【填写联系号码】</p>
+                    </div>
+
+                    <div class="card-tech card-tech-hover rounded-2xl p-6 text-center border-gradient-tech">
+                        <div class="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <h4 class="mt-5 text-white font-semibold">邮箱</h4>
+                        <p class="mt-2 text-tech-200 text-sm">business@zszc-digital.com</p>
+                    </div>
+
+                    <div class="card-tech card-tech-hover rounded-2xl p-6 text-center border-gradient-tech">
+                        <div class="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-electric-blue to-electric-purple flex items-center justify-center text-white text-xl shadow-tech">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <h4 class="mt-5 text-white font-semibold">商务合作</h4>
+                        <p class="mt-2 text-tech-200 text-sm">政企项目对接、数据要素合作、平台开发合作</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="relative bg-tech-900 border-t border-electric-blue/20 py-10">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <div class="relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-br from-electric-blue to-electric-purple"></div>
+                            <span class="relative text-white font-bold text-lg">中深</span>
+                        </div>
+                        <span class="text-white font-bold text-lg">中深智策(深圳)数字科技有限公司</span>
+                    </div>
+                    <p class="mt-4 text-tech-300 text-sm leading-relaxed">
+                        数字智策，赋能产业数字化转型，提供数据要素、平台研发、产业运营一体化服务。
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-4">快速链接</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="text-tech-300 hover:text-electric-blue transition-colors">关于我们</a></li>
+                        <li><a href="#business" class="text-tech-300 hover:text-electric-blue transition-colors">业务板块</a></li>
+                        <li><a href="#cases" class="text-tech-300 hover:text-electric-blue transition-colors">项目案例</a></li>
+                        <li><a href="#contact" class="text-tech-300 hover:text-electric-blue transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-4">关注我们</h4>
+                    <div class="flex gap-4 text-xl mt-3">
+                        <a href="#" class="w-10 h-10 rounded-lg bg-tech-700 border border-electric-blue/20 flex items-center justify-center text-tech-200 hover:text-white hover:border-electric-blue hover:bg-electric-blue/10 transition-all">
+                            <i class="fa-brands fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-tech-700 border border-electric-blue/20 flex items-center justify-center text-tech-200 hover:text-white hover:border-electric-blue hover:bg-electric-blue/10 transition-all">
+                            <i class="fa-brands fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-tech-700 border border-electric-blue/20 flex items-center justify-center text-tech-200 hover:text-white hover:border-electric-blue hover:bg-electric-blue/10 transition-all">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-tech-700 mt-10 pt-6 text-center text-sm text-tech-400">
+                <p>© 2025-2026 中深智策(深圳)数字科技有限公司 版权所有 | 粤ICP备XXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS脚本 -->
+    <script>
+        // 导航栏滚动变色
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function(){
+            if(window.scrollY > 50){
+                navbar.classList.remove('bg-transparent');
+                navbar.classList.add('bg-tech-900/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-electric-blue/10');
+            }else{
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-tech-900/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-electric-blue/10');
+            }
+        })
+
+        // 移动端菜单开关
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', function(){
+            mobileMenu.classList.toggle('hidden');
+        })
+
+        // 移动端菜单点击关闭
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', ()=>{
+                mobileMenu.classList.add('hidden');
+            })
+        })
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetDom = document.querySelector(targetId);
+                if(targetDom){
+                    window.scrollTo({
+                        top: targetDom.offsetTop - 72,
+                        behavior: 'smooth'
+                    })
+                }
+            });
+        })
+    </script>
+</body>
+</html>
+
