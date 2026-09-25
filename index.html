@@ -630,7 +630,7 @@
                     在这里，我们汇集了全球最热门的电子舞曲，为您带来无与伦比的音乐体验。无论您是电音爱好者、派对达人还是专业DJ，都能在这里找到属于您的节奏！
                 </p>
                 
-                <a href="#" class="enter-btn">
+                <a href="https://9gdj.com/9gdj-dj-index/" class="enter-btn">
                     <i class="fas fa-play"></i> 进入舞曲世界
                 </a>
                 
@@ -810,7 +810,8 @@
             }
         });
         
-        // 进入按钮效果
+        // 进入按钮效果：点击后跳转到 9GDJ 舞曲世界主页面
+        const ENTER_URL = 'https://9gdj.com/9gdj-dj-index/';
         const enterBtn = document.querySelector('.enter-btn');
         enterBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -820,8 +821,8 @@
             setTimeout(() => {
                 this.style.transform = 'scale(1)';
                 
-                // 在实际应用中，这里会跳转到主页面
-                alert('欢迎进入9GDJ舞曲世界！-目前暂未对外开放，敬请关注！');
+                // 跳转到舞曲世界主页面
+                window.location.href = ENTER_URL;
             }, 150);
         });
         
