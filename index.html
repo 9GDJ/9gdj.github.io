@@ -1,845 +1,333 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9GDJ | 我们不生产舞曲, 我们只是舞曲的搬运工！</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #fff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        
-        /* 头部样式 */
-        header {
-            text-align: center;
-            padding: 40px 0;
-            position: relative;
-            width: 100%;
-        }
-        
-        .logo {
-            font-size: 6rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
-            100% { text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff, 0 0 45px #ff00ff; }
-        }
-        
-        .tagline {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-            color: #ddd;
-            font-style: italic;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
-        /* 导航样式 */
-        nav {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 12px 25px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
-        }
-        
-        nav a.active {
-            background: rgba(255, 0, 255, 0.2);
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
-        }
-        
-        /* 主要内容区样式 */
-        .main-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 50px;
-            width: 100%;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        
-        .vinyl-section {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .vinyl-container {
-            position: relative;
-            width: 350px;
-            height: 350px;
-            margin-bottom: 30px;
-        }
-        
-        .vinyl {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #111, #333);
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            animation: rotate 20s linear infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .vinyl::before {
-            content: '';
-            position: absolute;
-            width: 90%;
-            height: 90%;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #222, #000);
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
-        }
-        
-        .vinyl::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #fff;
-            z-index: 2;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-        
-        .vinyl-label {
-            position: absolute;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-            font-weight: bold;
-            font-size: 1.5rem;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .welcome-section {
-            flex: 1;
-            min-width: 300px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
-        
-        .welcome-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .welcome-text {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #ddd;
-        }
-        
-        .enter-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            color: #000;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
-            margin-bottom: 30px;
-        }
-        
-        .enter-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 0, 255, 0.6);
-        }
-        
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 40px;
-            justify-content: center;
-        }
-        
-        .feature {
-            flex: 1;
-            min-width: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .feature i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #ff00ff;
-        }
-        
-        .feature h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        
-        .feature p {
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        /* 关于我们样式 */
-        .about-section {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            margin-top: 40px;
-        }
-        
-        .about-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-align: center;
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            color: #ddd;
-        }
-        
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .about-image img {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        .team-section {
-            margin-top: 40px;
-        }
-        
-        .team-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-align: center;
-        }
-        
-        .team-members {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-        
-        .team-member {
-            flex: 1;
-            min-width: 250px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .member-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #000;
-        }
-        
-        .member-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #ff00ff;
-        }
-        
-        .member-role {
-            font-size: 1rem;
-            color: #00ffff;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        .member-desc {
-            font-size: 0.9rem;
-            color: #ddd;
-            line-height: 1.5;
-        }
-        
-        .values-section {
-            margin-top: 60px;
-        }
-        
-        .values-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-align: center;
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .value-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .value-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .value-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #ff00ff;
-        }
-        
-        .value-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        
-        .value-desc {
-            font-size: 0.95rem;
-            color: #ddd;
-            line-height: 1.5;
-        }
-        
-        /* 脉冲动画效果 */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 255, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 0, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 255, 0); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: #ff00ff;
-            margin-top: 20px;
-        }
-        
-        /* 底部样式 */
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 50px;
-            color: #aaa;
-            width: 100%;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            transform: translateY(-5px);
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 4rem;
-            }
-            
-            .vinyl-container {
-                width: 280px;
-                height: 280px;
-            }
-            
-            .welcome-section {
-                padding: 30px;
-            }
-            
-            .welcome-title {
-                font-size: 1.8rem;
-            }
-            
-            .about-section {
-                padding: 30px;
-            }
-            
-            .about-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 3rem;
-                letter-spacing: 5px;
-            }
-            
-            .tagline {
-                font-size: 1.4rem;
-            }
-            
-            .vinyl-container {
-                width: 250px;
-                height: 250px;
-            }
-            
-            nav a {
-                margin: 5px;
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .welcome-title {
-                font-size: 1.5rem;
-            }
-            
-            .welcome-text {
-                font-size: 1rem;
-            }
-            
-            .about-section {
-                padding: 20px;
-            }
-            
-            .about-title {
-                font-size: 1.8rem;
-            }
-        }
-        
-        /* 漂浮动画 */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        /* 背景粒子效果 */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 6s infinite ease-in-out;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9GDJ | 舞曲世界 · 我们不生产舞曲，我们只是舞曲的搬运工</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305050B'/%3E%3Ctext x='32' y='46' font-family='Arial' font-size='40' font-weight='bold' text-anchor='middle' fill='%23FF2BD6'%3E9%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Bebas+Neue&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<style>
+/* ============ tokens ============ */
+:root{
+  --bg:#05050B;
+  --bg2:#0B0B16;
+  --panel:#0F0F1C;
+  --line:rgba(255,255,255,.08);
+  --magenta:#FF2BD6;
+  --cyan:#00E6FF;
+  --dim:#8B8B9C;
+  --text:#F4F4F8;
+  --font-d:"Bebas Neue","Oswald","Arial Narrow",sans-serif;
+  --font-c:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+/* ============ base ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-c);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--magenta);color:#000}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ============ nav ============ */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(5,5,11,.82);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex;align-items:center;gap:28px;
+  height:64px;
+}
+.brand{display:inline-block;padding:8px 0;font-family:var(--font-d);font-size:1.9rem;letter-spacing:2px;color:var(--text);line-height:1}
+.brand em{font-style:normal;color:var(--magenta);text-shadow:0 0 12px rgba(255,43,214,.7)}
+
+/* ============ hero ============ */
+.hero{
+  position:relative;
+  min-height:calc(100vh - 64px);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:96px 24px 80px;
+  overflow:hidden;
+}
+/* 舞台光束：慢速旋转的锥形光柱 + 顶部聚光 */
+.hero::before{
+  content:"";position:absolute;inset:-40% auto auto -60%;
+  width:220%;height:220%;
+  background:conic-gradient(from 0deg at 50% 0%,
+    transparent 0deg, rgba(255,43,214,.10) 6deg, transparent 14deg,
+    transparent 90deg, rgba(0,230,255,.10) 96deg, transparent 104deg,
+    transparent 180deg, rgba(255,43,214,.07) 186deg, transparent 194deg,
+    transparent 270deg, rgba(0,230,255,.09) 276deg, transparent 284deg);
+  animation:beamspin 26s linear infinite;
+  pointer-events:none;
+}
+@keyframes beamspin{to{transform:rotate(360deg)}}
+/* 顶部聚光锥 */
+.hero::after{
+  content:"";position:absolute;top:-10%;left:50%;transform:translateX(-50%);
+  width:900px;height:520px;
+  background:radial-gradient(50% 60% at 50% 0%, rgba(255,255,255,.06), transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;max-width:920px;margin:0 auto}
+
+.vinyl{
+  position:relative;
+  width:148px;height:148px;margin:0 auto 34px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, var(--magenta) 0 10%, #0B0B16 11% 13%, transparent 14%),
+    repeating-radial-gradient(circle at 50% 50%, #16161f 0 3px, #0c0c14 3px 6px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 40px rgba(255,43,214,.25);
+  animation:spin 16s linear infinite;
+}
+.vinyl::after{
+  content:"9GDJ";position:absolute;inset:0;margin:auto;
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-size:.95rem;letter-spacing:1px;color:#000;
+  background:linear-gradient(135deg,var(--magenta),var(--cyan));
+  box-shadow:0 0 16px rgba(0,230,255,.35);
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.vinyl.paused{animation-play-state:paused}
+
+/* 均衡器 */
+.eq{display:flex;align-items:flex-end;justify-content:center;gap:5px;height:34px;margin-bottom:26px}
+.eq i{
+  width:4px;height:100%;border-radius:2px;
+  background:linear-gradient(180deg,var(--cyan),var(--magenta));
+  transform-origin:bottom;
+  animation:eqbounce 1.1s ease-in-out infinite;
+}
+.eq i:nth-child(2n){animation-delay:.18s}
+.eq i:nth-child(3n){animation-delay:.34s}
+.eq i:nth-child(5n){animation-delay:.06s}
+@keyframes eqbounce{
+  0%,100%{transform:scaleY(.25)}
+  50%{transform:scaleY(1)}
+}
+
+.hero-title{
+  font-family:var(--font-d);
+  font-size:clamp(6rem,17vw,12.5rem);
+  line-height:.92;letter-spacing:.06em;
+  background:linear-gradient(120deg,var(--magenta) 20%,var(--cyan) 80%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 0 26px rgba(255,43,214,.35));
+}
+.hero-sub{
+  margin-top:10px;
+  font-family:var(--font-d);font-size:clamp(1.1rem,3vw,1.6rem);
+  letter-spacing:.45em;color:var(--dim);
+  text-indent:.45em;
+}
+.hero-tag{
+  margin:26px auto 0;max-width:560px;
+  font-size:clamp(1rem,2.4vw,1.2rem);color:var(--dim);
+}
+.hero-cta{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  margin-top:38px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:1.02rem;font-weight:700;
+  padding:14px 30px;border-radius:999px;
+  transition:transform .2s,box-shadow .3s,background .3s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+.btn-primary{background:var(--magenta);color:#000;box-shadow:0 0 0 1px rgba(255,43,214,.45),0 6px 30px rgba(255,43,214,.35)}
+.btn-primary:hover{background:var(--cyan);box-shadow:0 0 0 1px rgba(0,230,255,.45),0 8px 34px rgba(0,230,255,.4)}
+.btn-ghost{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--cyan),0 0 22px rgba(0,230,255,.25);color:var(--cyan)}
+
+/* ============ ticker ============ */
+.ticker{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--bg2);
+  overflow:hidden;
+  padding:14px 0;
+}
+.ticker-track{
+  display:flex;gap:0;
+  width:max-content;
+  animation:tickerscroll 30s linear infinite;
+}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker span{
+  font-family:var(--font-d);font-size:1.05rem;letter-spacing:.3em;
+  color:var(--dim);white-space:nowrap;padding:0 28px;
+}
+.ticker span::after{content:"♪";color:var(--magenta);margin-left:56px;text-shadow:0 0 10px rgba(255,43,214,.6)}
+@keyframes tickerscroll{to{transform:translateX(-50%)}}
+
+/* ============ sections 通用 ============ */
+section{padding:96px 0}
+.sec-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:20px;margin-bottom:44px;
+}
+.sec-head h2{
+  font-family:var(--font-d);font-weight:400;
+  font-size:clamp(2.2rem,5vw,3.2rem);letter-spacing:.06em;
+}
+.sec-head h2 i{
+  font-style:normal;color:var(--magenta);
+  text-shadow:0 0 16px rgba(255,43,214,.6);
+}
+
+/* ============ about ============ */
+.about-lead{
+  max-width:640px;margin:0 auto 44px;
+  text-align:center;
+  font-size:1.05rem;color:#C9C9D6;line-height:1.9;
+}
+.about-lead strong{color:var(--magenta);font-weight:700}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.value{
+  padding:26px 24px;
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  transition:border-color .3s;
+}
+.value:hover{border-color:rgba(0,230,255,.45)}
+.value b{display:block;font-size:1.05rem;color:var(--cyan);margin-bottom:8px}
+.value p{font-size:.9rem;color:var(--dim);margin:0;line-height:1.7}
+
+/* ============ footer ============ */
+.footer{
+  border-top:1px solid var(--line);
+  padding:34px 0;
+  text-align:center;color:var(--dim);font-size:.85rem;
+}
+.footer b{font-family:var(--font-d);font-weight:400;letter-spacing:2px;color:var(--text);font-size:1rem}
+.footer .ft-note{margin-top:8px}
+
+/* ============ 入场动画（一次性的编排时刻） ============ */
+.reveal{opacity:0;transform:translateY(18px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.reveal.r1{animation-delay:.05s}.reveal.r2{animation-delay:.18s}
+.reveal.r3{animation-delay:.3s}.reveal.r4{animation-delay:.42s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ============ 响应式 ============ */
+@media (max-width:640px){
+  .nav-inner{flex-wrap:wrap;height:auto;padding:12px 0;gap:10px}
+  .hero{padding:72px 16px 60px}
+  section{padding:72px 0}
+  .values{grid-template-columns:1fr}
+  .value{padding:22px 20px}
+  .footer{font-size:.9rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    
-    <div class="container">
-        <header>
-            <h1 class="logo floating">9GDJ</h1>
-            <p class="tagline">我们不生产舞曲, 我们只是舞曲的搬运工！</p>
-            
-            <nav>
-                <a href="#" class="active">首页</a>
-                <a href="#">热门舞曲</a>
-                <a href="#">DJ混音</a>
-                <a href="#">电音专辑</a>
-                <a href="#">排行榜</a>
-                <a href="#about">关于我们</a>
-            </nav>
-        </header>
-        
-        <div class="main-content">
-            <div class="vinyl-section">
-                <div class="vinyl-container">
-                    <div class="vinyl">
-                        <div class="vinyl-label">9GDJ</div>
-                    </div>
-                </div>
-                <div class="pulse"></div>
-                <p style="margin-top: 10px; color: #aaa;">点击进入舞曲世界</p>
-            </div>
-            
-            <div class="welcome-section">
-                <h2 class="welcome-title">欢迎来到9GDJ舞曲世界</h2>
-                <p class="welcome-text">
-                    在这里，我们汇集了全球最热门的电子舞曲，为您带来无与伦比的音乐体验。无论您是电音爱好者、派对达人还是专业DJ，都能在这里找到属于您的节奏！
-                </p>
-                
-                <a href="https://9gdj.com/9gdj-dj-index/" class="enter-btn">
-                    <i class="fas fa-play"></i> 进入舞曲世界
-                </a>
-                
-                <div class="features">
-                    <div class="feature">
-                        <i class="fas fa-music"></i>
-                        <h3>海量曲库</h3>
-                        <p>收录全球最新最热的电子舞曲</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-headphones"></i>
-                        <h3>高清音质</h3>
-                        <p>提供高品质音频体验</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-download"></i>
-                        <h3>免费下载</h3>
-                        <p>部分资源支持免费下载</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 关于我们部分 -->
-        <div class="about-section" id="about">
-            <h2 class="about-title">关于 9GDJ</h2>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <p>9GDJ 成立于 2012 年，是一家专注于电子舞曲分享与推广的在线平台。我们的使命是让更多人感受电子音乐的魅力，为全球电音爱好者提供最新、最热门的舞曲资源。</p>
-                    
-                    <p>我们不是舞曲的生产者，而是优质舞曲的搬运工。通过精心筛选和整理，我们汇集了来自世界各地的优秀电子音乐作品，包括 House、Techno、Trance、Dubstep 等多种风格。</p>
-                    
-                    <p>我们的团队由一群热爱电子音乐的资深DJ和音乐制作人组成，他们对音乐有着敏锐的洞察力和深刻的理解，确保我们推荐的每一首作品都能触动您的灵魂。</p>
-                    
-                    <p>除了音乐分享，9GDJ 还定期举办线上音乐节和 DJ 比赛，为新兴 DJ 提供展示才华的平台，推动电子音乐文化的传播与发展。</p>
-                </div>
-                
-                <div class="about-image">
-                    <!-- 这里可以放置关于我们的图片 -->
-                    <div style="width: 100%; height: 300px; background: linear-gradient(45deg, #ff00ff, #00ffff); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold; font-size: 1.5rem;">
-                        9GDJ 音乐世界
-                    </div>
-                </div>
-            </div>
-            
-            <div class="team-section">
-                <h3 class="team-title">我们的团队</h3>
-                
-                <div class="team-members">
-                    <div class="team-member">
-                        <div class="member-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h4 class="member-name">DJ Spark</h4>
-                        <p class="member-role">创始人 & 首席音乐策划</p>
-                        <p class="member-desc">拥有10年DJ经验，曾在多个国际音乐节表演，对电子音乐有着独到的见解和品味。</p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h4 class="member-name">Bass Queen</h4>
-                        <p class="member-role">内容总监</p>
-                        <p class="member-desc">音乐制作人出身，精通多种电子音乐风格，负责平台内容的质量把控和风格定位。</p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="member-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <h4 class="member-name">Mix Master</h4>
-                        <p class="member-role">技术负责人</p>
-                        <p class="member-desc">负责平台技术开发和用户体验优化，确保用户能够流畅地享受音乐之旅。</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="values-section">
-                <h3 class="values-title">我们的价值观</h3>
-                
-                <div class="values-grid">
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h4 class="value-title">热爱音乐</h4>
-                        <p class="value-desc">我们对电子音乐充满热情，致力于分享最优质的音乐作品，让更多人感受电子音乐的魅力。</p>
-                    </div>
-                    
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4 class="value-title">社区精神</h4>
-                        <p class="value-desc">我们相信音乐的力量能够连接人们，构建一个积极、包容的电子音乐爱好者社区。</p>
-                    </div>
-                    
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4 class="value-title">追求卓越</h4>
-                        <p class="value-desc">我们不断追求更高的质量标准，确保为用户提供最新、最优质的电子音乐体验。</p>
-                    </div>
-                    
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h4 class="value-title">全球视野</h4>
-                        <p class="value-desc">我们关注全球电子音乐发展趋势，将世界各地优秀的音乐作品带给中国听众。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <p>© 2012-2026 9GDJ | 让世界感受电音的魅力</p>
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-soundcloud"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
-            </div>
-        </footer>
-    </div>
 
-    <script>
-        // 创建背景粒子效果
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // 随机大小
-                const size = Math.random() * 10 + 5;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // 随机位置
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // 随机颜色
-                const colors = ['rgba(255, 0, 255, 0.3)', 'rgba(0, 255, 255, 0.3)', 'rgba(255, 255, 255, 0.2)'];
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                // 随机动画延迟
-                particle.style.animationDelay = `${Math.random() * 6}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // 黑胶唱片交互效果
-        const vinyl = document.querySelector('.vinyl');
-        vinyl.addEventListener('mouseenter', function() {
-            this.style.animationDuration = '10s';
-        });
-        
-        vinyl.addEventListener('mouseleave', function() {
-            this.style.animationDuration = '20s';
-        });
-        
-        vinyl.addEventListener('click', function() {
-            // 点击黑胶切换旋转速度
-            if (this.style.animationDuration === '5s') {
-                this.style.animationDuration = '20s';
-            } else {
-                this.style.animationDuration = '5s';
-            }
-        });
-        
-        // 进入按钮效果：点击后跳转到 9GDJ 舞曲世界主页面
-        const ENTER_URL = 'https://9gdj.com/9gdj-dj-index/';
-        const enterBtn = document.querySelector('.enter-btn');
-        enterBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // 添加点击效果
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-                
-                // 跳转到舞曲世界主页面
-                window.location.href = ENTER_URL;
-            }, 150);
-        });
-        
-        // 平滑滚动到关于我们部分
-        document.querySelectorAll('nav a[href="#about"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('about').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // 页面加载完成后创建粒子
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-        });
-    </script>
+<!-- ===== 顶部导航 ===== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="https://9gdj.com/">9<em>G</em>DJ</a>
+  </div>
+</header>
+
+<main>
+  <!-- ===== Hero ===== -->
+  <section class="hero" aria-label="首屏">
+    <div class="hero-inner">
+      <div class="vinyl reveal r1" title="9GDJ 黑胶" role="img" aria-label="旋转的黑胶唱片"></div>
+      <div class="eq reveal r1" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <h1 class="hero-title reveal r2">9GDJ</h1>
+      <p class="hero-sub reveal r2">舞曲世界 · DANCE WORLD</p>
+      <p class="hero-tag reveal r3">我们不生产舞曲，我们只是舞曲的搬运工。每晚零点，把全球最新的节拍带进你的场子。</p>
+      <div class="hero-cta reveal r4">
+        <a class="btn btn-primary" href="https://9gdj.com/9gdj-dj-index/">
+          进入舞曲世界
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="https://9gdj.com/9gdj-dj-index/?format=single">浏览最新单曲</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 跑马灯 ===== -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>HOUSE</span><span>TECHNO</span><span>TRANCE</span><span>DUBSTEP</span><span>BOUNCE</span><span>ELECTRO</span><span>PROGRESSIVE</span><span>LAK HOUSE</span><span>MELBOURNE</span><span>VINA HOUSE</span>
+      <span>HOUSE</span><span>TECHNO</span><span>TRANCE</span><span>DUBSTEP</span><span>BOUNCE</span><span>ELECTRO</span><span>PROGRESSIVE</span><span>LAK HOUSE</span><span>MELBOURNE</span><span>VINA HOUSE</span>
+    </div>
+  </div>
+
+  <!-- ===== 关于 ===== -->
+  <section aria-label="关于 9GDJ">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>关于<i>9GDJ</i></h2>
+      </div>
+      <div class="about-lead">
+        <p><strong>9GDJ</strong> 成立于 2012 年，是一家专注于电子舞曲分享与推广的在线平台。我们不生产舞曲，只是优质舞曲的搬运工——通过精心筛选，汇集来自世界各地的优秀电子音乐作品，涵盖 House、Techno、Trance、Dubstep 等多种风格。</p>
+      </div>
+      <div class="values">
+        <div class="value">
+          <b>热爱音乐</b>
+          <p>对电子音乐充满热情，把最优质的作品带给更多人。</p>
+        </div>
+        <div class="value">
+          <b>社区精神</b>
+          <p>相信音乐能连接人们，构建开放包容的电音爱好者社区。</p>
+        </div>
+        <div class="value">
+          <b>全球视野</b>
+          <p>关注全球电音趋势，把世界各地的优秀作品带给中国听众。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <p><b>9GDJ</b> · 让世界感受电音的魅力</p>
+    <p class="ft-note">© 2012-2026 9GDJ · 舞曲索引仅收录元数据，不存储音频文件</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ── 入场动画：一次性编排时刻 ──
+  document.querySelectorAll('.reveal').forEach(function(el){
+    el.style.animationName = '';
+  });
+  requestAnimationFrame(function(){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      el.style.animationName = 'rise';
+    });
+  });
+
+  // ── 黑胶点击：暂停 / 继续旋转 ──
+  var vinyl = document.querySelector('.vinyl');
+  vinyl.addEventListener('click', function(){
+    this.classList.toggle('paused');
+  });
+})();
+</script>
 </body>
 </html>
